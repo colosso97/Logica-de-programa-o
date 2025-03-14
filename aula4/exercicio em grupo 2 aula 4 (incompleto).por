@@ -9,13 +9,15 @@ Para cada convidado deverá ser cobrado o valor de 120,00. Exibir o total que
 deverá ser pago e quantidade de convidados presentes. Obs: Criar funções para
 cada opção.
 	*/
+	cadeia nomes[50]
+	inteiro contador = 0
+	inteiro opcao = 0
+	inteiro total_convidados = 0		
+	real pagamento = 0.0
 	funcao inicio()
 	{
-	
-		cadeia nome[3] 
-		real pagamento = 0.0
+
 		logico menus = verdadeiro
-		inteiro opcao = 0, i= 0
 
 		faca{
 			
@@ -23,7 +25,6 @@ cada opção.
 			escolha(opcao){
 
 			caso 0: 
-			escreva(pagamento)
 			menus = falso
 			pare
 			caso 1: 
@@ -41,42 +42,41 @@ cada opção.
 			pare
 			//i++
 		}
-		}enquanto(menus == verdadeiro)
-		i++
+		}enquanto(menus == verdadeiro)	
 	}
 
 	funcao menu(){
-		inteiro opcao 
-		escreva("1 - inserir nome \n 2 - lista convidados \n 3 - remover nome  \n 4 - pagamento \n 0 - sair")
+			escreva("\n 1 - inserir nome \n 2 - lista convidados \n 3 - remover nome  \n 4 - pagamento \n 0 - sair\n")
 			leia(opcao)
 		}
 	funcao caso1(){
-		inteiro i = 0, opcao = 0
-		cadeia nome[3]
-		faca{
-		escreva("Digite o novo nome")
-		leia(nome[i])
-		}enquanto(opcao < 3)
+				escreva("Digite o novo nome")
+				leia(nomes[contador])
+				contador++
+				total_convidados++
 		}
 	funcao caso2(){
-		cadeia nome[3]
-		inteiro i = 0, opcao = 0
-		faca{
-			escreva(nome[i])
-		}enquanto(opcao < 3)
+			escreva("\n Lista de convidados")
+			para(inteiro i=0; i < 50; i++){
+				escreva("\n",nomes[i])
+				}
 		}
 	funcao caso3(){
-		cadeia nome[3]
-		inteiro i= 0, opcao = 0
-		faca{
-			se(nome[i] != " "){
-				nome[i] = " "
-				}
-		}enquanto(opcao < 3)
+			cadeia nome_busca
+			escreva("\nDigite o nome que deseja remover: ")
+			leia(nome_busca)
+			para(inteiro i=0; i < 50; i++){
+				se(nome_busca == nomes[i] ){
+					nomes[i] = ""
+					total_convidados--
+					escreva("\nConvidado removido!")
+				}		
+			}
+			
 		}
 	funcao caso4(){
-		real pagamento
-		pagamento = 120.00 
+			pagamento = total_convidados * 120.00 
+			escreva("O total a ser pago por ",total_convidados," Será de: R$ ",pagamento,"\n")
 		}	
 }
 
@@ -85,7 +85,7 @@ cada opção.
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1445; 
+ * @POSICAO-CURSOR = 602; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
